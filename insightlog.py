@@ -137,7 +137,7 @@ def filter_data(log_filter, data=None, filepath=None, is_casesensitive=True, is_
     return_data = ""
     if filepath:
         try:
-            with open(filepath, 'r') as file_object:
+            with open(filepath, 'r', encoding='utf-8', errors='replace') as file_object:
                 for line in file_object:
                     if check_match(line, log_filter, is_regex, is_casesensitive, is_reverse):
                         return_data += line
@@ -227,7 +227,7 @@ def apply_filters(filters, data=None, filepath=None):
     """Apply all filters to data or file and return filtered results"""
     if filepath:
         try:
-            with open(filepath, 'r') as file_object:
+            with open(filepath, 'r', encoding='utf-8', errors='replace') as file_object:
                 filtered_lines = []
                 for line in file_object:
                     if check_all_matches(line, filters):
@@ -271,7 +271,7 @@ def get_requests(service, data=None, filepath=None, filters=None):
     else:
         if filepath:
             try:
-                with open(filepath, 'r') as f:
+                with open(filepath, 'r', encoding='utf-8', errors='replace') as f:
                     filtered_data = f.read()
             except (IOError, EnvironmentError) as e:
                 print(e.strerror)
