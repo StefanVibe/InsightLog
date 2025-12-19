@@ -19,14 +19,6 @@
   - This creates a type mismatch where defaults can never be `'*'`, but the function logic expects it can be.
   - The function will raise an exception when using defaults with wildcard logic.
 
-## 4. get_requests returns None on file errors but empty list for empty data
-- **How to replicate:**
-  - Call `get_requests()` with a non-existent file path.
-  - Returns `None` on file errors.
-  - Call `get_requests()` with an empty file or filtered data.
-  - Returns `[]` for empty data.
-  - This inconsistent return type (None vs empty list) can cause issues if code checks for one but not the other.
-
 
 ## 7. _get_auth_year() has flawed year detection logic
 - **How to replicate:**

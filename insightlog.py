@@ -275,7 +275,7 @@ def get_requests(service, data=None, filepath=None, filters=None):
                     filtered_data = f.read()
             except (IOError, EnvironmentError) as e:
                 print(e.strerror)
-                return None
+                return []
         else:
             filtered_data = data
     
@@ -292,7 +292,7 @@ def get_requests(service, data=None, filepath=None, filters=None):
     elif settings['type'] == 'auth':
         return get_auth_requests(filtered_data, request_pattern, date_pattern, date_keys)
     else:
-        return None
+        return []
 
 
 # CLI entry point
